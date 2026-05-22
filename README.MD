@@ -45,10 +45,9 @@ Use these demo credentials to explore the project:
 
 ## 💡 How to use
 
-1. Open `dashboard.html` in a browser, or launch with Live Server in VS Code.
-2. Navigate between pages using the top menu.
-3. Click on calendar dates and explore exam/resource cards.
-4. Use the demo login fields if the app includes a login page.
+1. Navigate between pages using the top menu.
+2. Click on calendar dates and explore exam/resource cards.
+3. Use the demo login fields if the app includes a login page.
 
 
 ---
