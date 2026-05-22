@@ -1,0 +1,254 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Task Manager</title>
+     <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- external css -->
+     <link rel="stylesheet" href="dashboard.css">
+     
+     <!-- Chart.js for visualizations -->
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard-container">
+        
+        <!-- Top Navigation Header -->
+        <header class="top-header">
+            <div class="header-brand">
+                <h1 class="brand-title">🎓 Student Tasks</h1>
+            </div>
+            <nav class="top-nav">
+                <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                <a href="assignment.html" class="nav-link">Assignments</a>
+                <a href="course.html" class="nav-link">Courses</a>
+                <a href="calender.html" class="nav-link">Calendar</a>
+            </nav>
+            <div class="header-actions">
+                <div class="search-wrap">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Search assignments" class="search-input">
+                </div>
+                <button class="btn-primary">+ New Assignment</button>
+                <a href="index.html" class="logout-link" onclick="window.location.href='login.html'">
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h1 class="welcome-title">Good afternoon, Aiman</h1>
+                    <p class="welcome-subtitle">You have 3 assignments due this week. Keep up the pace and stay on top of your classes.</p>
+                    <div class="status-badges">
+                        <span class="status-badge">Freshman</span>
+                        <span class="status-badge">Computer Science</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Overview -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="bi bi-clipboard-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-value">3</p>
+                            <p class="stat-label">Pending Assignments</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="bi bi-calendar-week"></i>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-value">3</p>
+                            <p class="stat-label">Due This Week</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-value">7</p>
+                            <p class="stat-label">Completed</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Dashboard Grid -->
+            <section class="dashboard-section">
+                <div class="dashboard-grid">
+                    <!-- Chart Card -->
+                    <div class="chart-card">
+                        <h3 class="card-title">Assignment Progress</h3>
+                        <div class="chart-container">
+                            <canvas id="completionChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Courses Card -->
+                    <div class="courses-card">
+                        <h3 class="card-title">Current Courses</h3>
+                        <div class="courses-list">
+                            <div class="course-item">
+                                <div class="course-info">
+                                    <p class="course-code">IMS 566</p>
+                                    <p class="course-name">Advanced Web Development</p>
+                                </div>
+                                <div class="course-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 65%"></div>
+                                    </div>
+                                    <p class="progress-text">65% complete</p>
+                                </div>
+                            </div>
+                            <div class="course-item">
+                                <div class="course-info">
+                                    <p class="course-code">IMS 565</p>
+                                    <p class="course-name">Project Management</p>
+                                </div>
+                                <div class="course-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 10%"></div>
+                                    </div>
+                                    <p class="progress-text">10% complete</p>
+                                </div>
+                            </div>
+                            <div class="course-item">
+                                <div class="course-info">
+                                    <p class="course-code">IMS 564</p>
+                                    <p class="course-name">User Interface Design</p>
+                                </div>
+                                <div class="course-progress">
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 20%"></div>
+                                    </div>
+                                    <p class="progress-text">20% complete</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Assignments Table -->
+                    <div class="assignments-card">
+                        <h3 class="card-title">Upcoming Assignments</h3>
+                        <div class="assignments-table">
+                            <div class="table-row table-header">
+                                <div class="col-assignment">Assignment</div>
+                                <div class="col-course">Course</div>
+                                <div class="col-due">Due Date</div>
+                                <div class="col-priority">Priority</div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-assignment">Project Management</div>
+                                <div class="col-course">IMS 565</div>
+                                <div class="col-due">Week 9</div>
+                                <div class="col-priority"><span class="priority-badge high">High</span></div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-assignment">Web Development</div>
+                                <div class="col-course">IMS 566</div>
+                                <div class="col-due">Week 8</div>
+                                <div class="col-priority"><span class="priority-badge medium">Medium</span></div>
+                            </div>
+                            <div class="table-row">
+                                <div class="col-assignment">UI Design</div>
+                                <div class="col-course">IMS 564</div>
+                                <div class="col-due">Week 7</div>
+                                <div class="col-priority"><span class="priority-badge low">Low</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions & Next Deadline -->
+                    <div class="actions-card">
+                        <div class="deadline-widget">
+                            <h4 class="widget-title">Next Deadline</h4>
+                            <div class="deadline-info">
+                                <p class="deadline-course">IMS 566</p>
+                                <p class="deadline-desc">Advanced Web Development</p>
+                                <p class="deadline-date">Due in 1 week</p>
+                            </div>
+                        </div>
+                        <div class="study-plan-widget">
+                            <h4 class="widget-title">Study Plan</h4>
+                            <ul class="plan-items">
+                                <li>Make Webpages</li>
+                                <li>Clean Up the UI</li>
+                                <li>Hosting In GitHub</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('completionChart').getContext('2d');
+            const completionChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Completed', 'Pending', 'Overdue'],
+                    datasets: [{
+                        data: [7, 3, 3], // Based on the stats: 16 completed, 8 pending, adding 2 overdue for demo
+                        backgroundColor: [
+                            '#28a745', // Green for completed
+                            '#ffc107', // Yellow for pending
+                            '#dc3545'  // Red for overdue
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    animation: {
+                        duration: 0 // Disable animations to prevent movement
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                usePointStyle: true
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const label = context.label || '';
+                                    const value = context.parsed || 0;
+                                    const total = context.dataset.data.reduce((a, b) => a + b, 0);
+                                    const percentage = Math.round((value / total) * 100);
+                                    return `${label}: ${value} (${percentage}%)`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

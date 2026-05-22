@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Schedule - Student Task Manager</title>
+    <!-- bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- icon -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- external css -->
+    <link rel="stylesheet" href="exam_schedule.css">
+</head>
+<body>
+    <div class="dashboard-container">
+
+        <!-- Top Navigation Header -->
+        <header class="top-header">
+            <div class="header-brand">
+                <h1 class="brand-title">🎓 Student Tasks</h1>
+            </div>
+            <nav class="top-nav">
+                <a href="dashboard.html" class="nav-link">Dashboard</a>
+                <a href="assignment.html" class="nav-link">Assignments</a>
+                <a href="course.html" class="nav-link active">Courses</a>
+                <a href="calender.html" class="nav-link">Calendar</a>
+            </nav>
+            <div class="header-actions">
+                <div class="search-wrap">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Search exams" class="search-input">
+                </div>
+                <button class="btn-primary" data-bs-toggle="modal" data-bs-target="#addExamModal">+ Add Exam</button>
+                <a href="index.html" class="logout-link" onclick="window.location.href='login.html'">
+                    <i class="bi bi-box-arrow-right"></i>
+                </a>
+            </div>
+        </header>
+
+        <main class="main-content">
+
+            <!-- Welcome Section -->
+            <section class="welcome-section">
+                <div class="welcome-content">
+                    <h1 class="welcome-title">Exam Schedule</h1>
+                    <p class="welcome-subtitle">Track your upcoming exams and prepare effectively.</p>
+                    <div class="status-badges">
+                        <span class="status-badge">3 Upcoming Exams</span>
+                        <span class="status-badge">Next: May 18, 2026</span>
+                        <span class="status-badge">Computer Science</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Exam Stats Section -->
+            <section class="stats-section">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-value">3</p>
+                            <p class="stat-label">Upcoming Exams</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-value">4</p>
+                            <p class="stat-label">Days Until Next</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <i class="bi bi-book"></i>
+                        </div>
+                        <div class="stat-content">
+                            <p class="stat-value">5</p>
+                            <p class="stat-label">Subjects</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Exam Schedule Section -->
+            <section class="exam-schedule-section">
+                <div class="exam-grid">
+                    <!-- Exam Cards -->
+                    <div class="exam-card priority-high">
+                        <div class="card-header">
+                            <div class="exam-icon">
+                                <i class="bi bi-code-slash"></i>
+                            </div>
+                            <div class="exam-priority">
+                                <span class="priority-badge high">High Priority</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="exam-title">Advanced Web Development</h3>
+                            <p class="exam-course">IMS 566</p>
+                            <div class="exam-details">
+                                <div class="detail-item">
+                                    <i class="bi bi-calendar-event"></i>
+                                    <span>May 18, 2026</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="bi bi-clock"></i>
+                                    <span>12:00 PM - 4:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <span>Makmal Komputer 6, bangunan IM</span>
+                                </div>
+                            </div>
+                            <div class="exam-description">
+                                Final examination covering HTML5, CSS3, JavaScript frameworks, and responsive design principles.
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-secondary">Study Plan</button>
+                            <button class="btn-primary">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-card priority-medium">
+                        <div class="card-header">
+                            <div class="exam-icon">
+                                <i class="bi bi-bar-chart"></i>
+                            </div>
+                            <div class="exam-priority">
+                                <span class="priority-badge medium">Medium Priority</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="exam-title">Project Management</h3>
+                            <p class="exam-course">IMS 565</p>
+                            <div class="exam-details">
+                                <div class="detail-item">
+                                    <i class="bi bi-calendar-event"></i>
+                                    <span>May 22, 2026</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="bi bi-clock"></i>
+                                    <span>11:00 PM - 2:00 PM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <span>Bilik PTAR, Perpustakaan</span>
+                                </div>
+                            </div>
+                            <div class="exam-description">
+                                Mid-term examination on project lifecycle, risk management, and agile methodologies.
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-secondary">Study Plan</button>
+                            <button class="btn-primary">View Details</button>
+                        </div>
+                    </div>
+
+                    <div class="exam-card priority-low">
+                        <div class="card-header">
+                            <div class="exam-icon">
+                                <i class="bi bi-palette"></i>
+                            </div>
+                            <div class="exam-priority">
+                                <span class="priority-badge low">Low Priority</span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <h3 class="exam-title">User Interface Design</h3>
+                            <p class="exam-course">IMS 564</p>
+                            <div class="exam-details">
+                                <div class="detail-item">
+                                    <i class="bi bi-calendar-event"></i>
+                                    <span>May 28, 2026</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="bi bi-clock"></i>
+                                    <span>8:00 AM - 11:00 AM</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="bi bi-geo-alt"></i>
+                                    <span>Bilik PTAR, Perpustakaan</span>
+                                </div>
+                            </div>
+                            <div class="exam-description">
+                                Final project presentation and portfolio review covering UI/UX design principles and prototyping.
+                            </div>
+                        </div>
+                        <div class="card-actions">
+                            <button class="btn-secondary">Study Plan</button>
+                            <button class="btn-primary">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Study Tips Section -->
+            <section class="study-tips-section">
+                <div class="tips-card">
+                    <h3 class="card-title">Study Tips & Reminders</h3>
+                    <div class="tips-grid">
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <i class="bi bi-lightbulb"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Active Recall</h4>
+                                <p>Test yourself regularly instead of re-reading notes.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <i class="bi bi-clock-history"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Spaced Repetition</h4>
+                                <p>Review material at increasing intervals for better retention.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <i class="bi bi-moon-stars"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Sleep Well</h4>
+                                <p>Get adequate sleep before exams for optimal performance.</p>
+                            </div>
+                        </div>
+                        <div class="tip-item">
+                            <div class="tip-icon">
+                                <i class="bi bi-cup-hot"></i>
+                            </div>
+                            <div class="tip-content">
+                                <h4>Stay Hydrated</h4>
+                                <p>Drink plenty of water to maintain focus and concentration.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Add Exam Modal -->
+    <div class="modal fade" id="addExamModal" tabindex="-1" aria-labelledby="addExamModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addExamModalLabel">Add New Exam</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addExamForm">
+                        <div class="mb-3">
+                            <label for="examTitle" class="form-label">Exam Title</label>
+                            <input type="text" class="form-control" id="examTitle" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="examCourse" class="form-label">Course</label>
+                            <input type="text" class="form-control" id="examCourse" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="examDate" class="form-label">Exam Date</label>
+                            <input type="date" class="form-control" id="examDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="examTime" class="form-label">Exam Time</label>
+                            <input type="time" class="form-control" id="examTime" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="examDuration" class="form-label">Duration (hours)</label>
+                            <input type="number" class="form-control" id="examDuration" min="1" max="8" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="examLocation" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="examLocation" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="examDescription" class="form-label">Description</label>
+                            <textarea class="form-control" id="examDescription" rows="3"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="examPriority" class="form-label">Priority</label>
+                            <select class="form-select" id="examPriority">
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" onclick="addExam()">Add Exam</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+    <script>
+        function addExam() {
+            // Simple function to add exam (for demo purposes)
+            const title = document.getElementById('examTitle').value;
+            const course = document.getElementById('examCourse').value;
+            const date = document.getElementById('examDate').value;
+            const time = document.getElementById('examTime').value;
+            const location = document.getElementById('examLocation').value;
+
+            if (title && course && date && time && location) {
+                // In a real app, this would send data to server
+                alert('Exam added: ' + title);
+                // Close modal
+                const modal = bootstrap.Modal.getInstance(document.getElementById('addExamModal'));
+                modal.hide();
+                // Reset form
+                document.getElementById('addExamForm').reset();
+            } else {
+                alert('Please fill in all required fields.');
+            }
+        }
+    </script>
+
+</body>
+</html>
